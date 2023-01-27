@@ -1,0 +1,8 @@
+/* .cards {
+    background-image: url(https://wallpaperaccess.com/full/831749.png);
+} */
+
+.cards{
+        position: static;
+        top:100%;
+}

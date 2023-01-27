@@ -1,0 +1,22 @@
+.bar{
+    /* background-image: url(https://wallpaperaccess.com/full/831749.png); */
+    position: static;
+    top:100%;
+}
+
+.bar input{
+    width: 150px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    outline: none;
+}
+
+.bar button:hover {
+    background-color: lawngreen;
+    color: aliceblue;
+    border-radius: 5px;
+    padding:5px;
+    font-size: 15px;
+
+}
