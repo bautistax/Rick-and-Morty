@@ -1,0 +1,31 @@
+.bar{
+    position: relative;
+    top:50%;
+}
+
+.bar input{
+    width: 180px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    outline: none;
+    margin-right: 40px;
+}
+.btn{
+    margin-left: 50px;
+    margin-top: 20px;
+    padding:10px;
+    /* font-size: 15px; */
+}
+
+.bar button:hover {
+    background-color: lawngreen;
+    color: black;
+    border-radius: 5px;
+    padding:5px;
+    font-size: 15px;
+}
+
+
+
+

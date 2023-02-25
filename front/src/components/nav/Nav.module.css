@@ -1,0 +1,21 @@
+.nav{
+  display: flex; /* flex */
+  justify-content: space-around;
+  align-items: center;
+}
+.link{
+  color: aliceblue;
+  text-decoration: none;
+  border-radius: 10px;
+  background:darkslategray;
+  padding: 10px;
+}
+
+.link:hover{
+  background-color: lawngreen;
+    color: black;
+    border-radius: 5px;
+    padding:5px;
+    
+}
+

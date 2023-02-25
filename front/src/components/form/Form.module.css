@@ -1,0 +1,84 @@
+/* .forms{
+    background-color: gray;
+    max-width: 100%;
+    max-height: 100%;
+} */
+
+body {
+    background-color: #322B2B;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
+ :root {
+    --font-style: 'Nunito Sans', sans-serif;
+}
+
+/* body {
+    font-family: var(--font-style);
+} */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: absolute;
+    width: 443px;
+    height: 440px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #151515;
+    box-shadow: 0px 1px 4px #3cb72c;
+    border-radius: 35px;
+}
+
+.user{
+    color: #abe0b9;
+    margin: auto;
+    font-size: 40px;
+    font-family: fantasy;
+    
+}
+
+input {
+    width: 75%;
+    margin: auto;
+    background-color: #abe0b9;
+    padding: 2%;
+    border-radius: 25px;
+    border: 0;
+}
+
+input::placeholder {
+    color: #333030;
+}
+
+button {
+    /* width: 20%;
+    padding: 1%;
+    border-radius: 25px;
+    color: white;
+    background-color: #3cb72c;
+    border: 0;
+    margin: auto;
+    cursor: pointer; */
+
+    
+    border-radius: 25px;
+    box-shadow: 0px 4px 4px #00ffc8;
+    border: 0;
+    margin: auto;
+    color: #fff;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    outline: none;
+    padding: 15px 15px;
+    overflow: hidden;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+
+
+
+/* padding: 15px 50px; */
