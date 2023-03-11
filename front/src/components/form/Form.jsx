@@ -45,8 +45,8 @@ export default function Form (props){
         {/* <label className={styles.user} htmlFor='password'>Password:</label> */}
         <input
          id='password'
-        name='password'
-        placeholder='Password'
+         name='password'
+         placeholder='Password'
          type='password'
          value={userData.password}
          onChange={handleInputChange}

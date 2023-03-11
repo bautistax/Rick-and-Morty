@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import styles from './SearchBar.module.css';
-export default function SearchBar(props) {
-  
 
+export default function SearchBar(props) {
+
+   const {onSearch,random}=props;
    const[character,setCharacter]=useState("");
 
    const handleChange= (e)=>{
@@ -10,11 +11,23 @@ export default function SearchBar(props) {
       console.log(value)
       setCharacter(value)
    }
+
+   const handleSubmit=(e)=>{
+      e.preventDefault()
+   }
    return (
       <div className={styles.bar}>
-      <input type='search' placeholder='Search...'  onChange={handleChange}/>
-      <button className={styles.btn} onClick={() => props.onSearch(character)}>Add Character</button>
+      
+         <form  onSubmit={handleSubmit}>
+          <input type='search'  value={character} placeholder='Search...'  onChange={handleChange}/>
+         </form>
+          <button className={styles.btn} onClick={() => {onSearch(character)}}>Add Character</button>
+         <button className={styles.random} onClick={random} >Random</button>
+
+
       </div>
+
+
 
    );
 }

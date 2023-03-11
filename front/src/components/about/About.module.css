@@ -84,6 +84,3 @@ ul li:nth-child(3) a::before {
 ul li:hover a::before {
     height: 100%;
 }
-
-
-

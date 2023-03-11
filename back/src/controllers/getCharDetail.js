@@ -4,19 +4,19 @@ const axios=require('axios');
 const url='https://rickandmortyapi.com/api/character/';
 
 const  getCharDetail=async(req, res)=>{
+    const {id}=req.params;
     try{
-        const {id}=req.params;
-        const result= await axios.get(`${url}${id}`)
+        const result= await axios(`${url}${id}`)
         const characterDetails=result.data
-            let character={
+            const detailsCharacter={
                 id:characterDetails.id,
-                name:characterDetails.name,
                 image:characterDetails.image,
+                name:characterDetails.name,
                 gender:characterDetails.gender,
                 species:characterDetails.species,
                 origin:characterDetails.origin
             };
-         res.status(200).json(character);
+         res.status(200).json(detailsCharacter);
     }
     catch(error){
         res.status(500).json({message:error.message})

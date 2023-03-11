@@ -7,19 +7,24 @@ import Detail from './components/detail/Detail.jsx';
 import {Routes, Route, useLocation, useNavigate} from 'react-router-dom';
 import Form from './components/form/Form.jsx';
 import Favorites from './components/favorites/Favorites.jsx';
+import Error from './components/errors/Error.jsx';
+
 
 
 
 function App () {
-  const navigate = useNavigate();
+
   const location= useLocation();
+  const[characters,setCharacters]=useState([]);
   
+  
+  //Seguridad del formulario.
+  const [access,setAccess]=useState(true);
   const username="bautistabauza@gmail.com";
   const password="ba060702";
+  const navigate = useNavigate();
   
-  const [access,setAccess]=useState(false);
 
-  const[characters,setCharacters]=useState([]);
 
 
   const login=(userdata)=>{
@@ -31,50 +36,39 @@ function App () {
     }
     }
 
-
+  //Este use efect no nos dejará navegar por la aplicación a menos que la información sea correcta.
   useEffect(() => {
   !access && navigate('/');
   }, [access]);
 
 
-
-//   const onSearch=async(character)=> {
-//     console.log('onSearch');
-//     try {
-//       const result= await fetch(`http://localhost:3001/rickandmorty/character/${character}`)
-//       const characterElemts=result.data
-//              if (characterElemts.name) {
-//                 setCharacters((oldChars) => [...oldChars, characterElemts]);
-//               } else {
-//                 window.alert('No hay personajes con ese ID');
-//              }
-//     } catch (error) {
-//       console.log(error);
-//     }
-//  }
-
-
+  //Edit del Back.
  function onSearch(character) {
-  //web Server
-  //fetch(`http://localhost:3001/rickandmorty/character/${character}`)
-  //Promesas
-  //fetch(`http://localhost:3001/rickandmorty/onsearch/${character}`)
      //express
   fetch(`http://localhost:3001/rickandmorty/character/${character}`)
      .then((response) => response.json())
      .then((data) => {
-      //console.log(data)
         if (data.name) {
            setCharacters((oldChars) => [...oldChars, data]);
         } else {
            window.alert('No hay personajes con ese ID');
         }
-     });
-         ///
-         setCharacters(characters.filter(char=>char.id!==character))
-         ///
+      });
+  setCharacters(characters.filter(char=>char.id!==character));
 }
 
+function random() {
+  const num=Math.round(Math.random()*826)
+  const number=num
+  fetch(`https://rickandmortyapi.com/api/character/${number}`)
+  .then((response) => response.json())
+  .then((data) => {
+     if (data.name) {
+        setCharacters((oldChars) => [...oldChars, data]); 
+      }
+    });
+  setCharacters(characters.filter(char=>char.id!==number))
+}
 
  const onClose= (id) =>{
   setCharacters(characters.filter(char=>char.id!==id))
@@ -82,19 +76,16 @@ function App () {
 
   return (
     <div className='App' style={{ padding: '25px' }}>
-    <div>
-      {location.pathname !==  '/' && <Nav onSearch={onSearch} />}
-     </div>
+    
+      {location.pathname !==  '/' ?  <Nav onSearch={onSearch} random={random}/>:null}
      
       <Routes>
         <Route path='/favorites' element={<Favorites />}></Route>
         <Route path='/' element={<Form login={login}/>}></Route>
         <Route path='/about' element={<About />}></Route>
-        <Route path='/home' element={<Cards
-          characters={characters}
-          onClose={onClose}
-          />}></Route>
+        <Route path='/home' element={<Cards characters={characters} onClose={onClose} />}></Route>
         <Route path='/detail/:detailId' element={<Detail />}></Route>
+        <Route path='*' element={<Error/>}></Route>
         </Routes>
     </div>
   )

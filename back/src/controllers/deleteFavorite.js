@@ -1,21 +1,19 @@
-const favs = require('../utils/favs.js');
-
-const deleteFavorite=(req,res)=>{
-    const {id}= req.params;
+const { Favorite } = require('../DB_connection');
+​
+const deleteFavorite = async (req, res) => {
     try {
-        if(id){
-            const characterFiltered= favs.filter(charac=>charac.id!== Number(id));
-            if(characterFiltered.length !== favs.length){
-                favs= characterFiltered;
-                res.status(200).json({succes: true})
-            }
-        }
+        const { id } = req.params;
+​
+        const favoriteDeleted = await Favorite.findByPk(id);
+        if(!favoriteDeleted) return res.status(404).json({message: `There is not character with id ${id}`})
+​
+        favoriteDeleted.destroy();
+        return res.status(200).json({message: 'Favorite deleted successfully'});
         
     } catch (error) {
-        res.status(500).json({message: error.message})
+        return res.status(404).json({message: error.message}) 
     }
 }
+​
+module.exports = deleteFavorite;
 
-
-
-module.exports=deleteFavorite;

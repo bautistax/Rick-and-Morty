@@ -1,16 +1,14 @@
-const favs= require('../utils/favs.js');
-
-const getFavorite=(req,res)=>{
-    res.status(200).json(favs)
+const { Favorite } = require('../DB_connection');
+​
+const getFavorite = async (req, res) => {
+    try {
+        const favorites = await Favorite.findAll();
+        if(!favorites.length) return res.status(404).json({message: 'No favorites yet'});
+​
+        return res.status(200).json(favorites);
+    } catch (error) {
+        return res.status(400).json({message: error.message});
+    }
 }
-
-// const getFavorite=async(req,res)=>{
-//     try {
-//         const fav= await fav.findAll();
-//         res.status(200).json(favs)
-//     } catch (error) {
-//         res.status(500).json(error)
-//     }
-// }
-
-module.exports=getFavorite;
+​
+module.exports =  getFavorite

@@ -4,7 +4,7 @@ import  {ADD_CHARACTER, DELETE_CHARACTER,FILTER,ORDER} from './types.js';
 export  function addCharacter (charac) {
     return async  function (dispatch){
         try {
-            const character= await axios.post(`http://localhost:3001/rickandmorty/fav`, charac)
+            const character= await axios.post(`http://localhost:3001/rickandmorty/fav`, charac);
                 dispatch({
                     type: ADD_CHARACTER,
                     payload: character.data,
@@ -30,20 +30,20 @@ export  function deleteCharacter(id) {
 };
 
 
-// export function getFavorites(){
-//     return async function (dispatch){
-//         try {
-//             const character= axios.get(`http://localhost:3001/rickandmorty/fav`)
-//             return dispatch({
-//                 type: GET_FAVORITE,
-//                 payload: character.data
+export function getFavorites(){
+    return async function (dispatch){
+        try {
+            const character= await axios.get(`http://localhost:3001/rickandmorty/fav`)
+            return dispatch({
+                type: "GET_FAVORITE",
+                payload: character.data
 
-//             })
-//         } catch (error) {
-//             console.log(error);
-//         }
-//     }
-// }
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
 
 export function filterCards (status){
     return{

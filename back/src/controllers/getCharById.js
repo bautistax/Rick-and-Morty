@@ -3,11 +3,11 @@ const axios=require('axios');
 const url='https://rickandmortyapi.com/api/character/';
 
 const  getCharById=async(req, res)=>{
+    const {id}=req.params;
     try{
-        const {id}=req.params;
-        const result = await axios.get(`${url}${id}`)
-        const characterElem = result.data
-            let character={
+        const result = await axios(`${url}${id}`);
+        const characterElem = result.data;
+            const character={
                 id:characterElem.id,
                 name:characterElem.name,
                 image:characterElem.image,
@@ -23,22 +23,3 @@ const  getCharById=async(req, res)=>{
     
     module.exports=getCharById;
 
-// const getCharById =async (req, res) => {
-//     const { id } = req.params;
-//     try {
-//        const result= await axios(`${url}${id}`);
-//        const characterApi=result.data;
-//             const character = {
-//                 id: characterApi.id,
-//                 image: characterApi.image,
-//                 name: characterApi.name,
-//                 gender: characterApi.gender,
-//                 species: characterApi.species
-//             }
-//             console.log("datos enviados")
-//             res.status(200).json(character);
-//     }
-//     catch(error){
-//         res.status(500).json({message: error.message})
-//     }
-// }

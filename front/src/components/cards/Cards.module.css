@@ -1,8 +1,16 @@
-/* .cards {
-    background-image: url(https://wallpaperaccess.com/full/831749.png);
-} */
+.container{
+    display: flex;
+    justify-content: center;
+    background-position: center;
+    background-size: cover;
+    min-height: 90.9vh;
+    max-height: fit-content;
+    padding-top: 60px;
 
-.cards{
-        position: static;
-        top:100%;
+}
+
+.content_cards{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }

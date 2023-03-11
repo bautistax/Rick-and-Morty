@@ -1,9 +1,18 @@
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import Card from '../card/Card.jsx';
-import { orderCards, filterCards } from "../../redux/actions.js";
+import { orderCards, getFavorites ,filterCards } from "../../redux/actions.js";
 import { useDispatch } from "react-redux";
+import style from "./Favorites.module.css";
+
+
 
 export function Favorites ({ myFavorites }){
+    
+    useEffect(()=>{
+        dispatch(getFavorites())
+    },[]);
+    
     const dispatch= useDispatch();
 
     const handleDispatch=(e)=>{
@@ -19,9 +28,9 @@ export function Favorites ({ myFavorites }){
 
 
     return(
-        <div>
+        <div className={style.container}>
 
-         <div>
+         <div className={style.filtros}>
             <select name="order" onClick={handleDispatch}>
                 <option value='Ascendente'>Ascendente</option>
                 <option value='Descendente'>Descendente</option>
@@ -33,7 +42,7 @@ export function Favorites ({ myFavorites }){
                 <option value='unknown'>unknown</option>
             </select>
          </div>
-
+           <div className={style.content_cards}>
             {myFavorites?.map(fav => (
                 <Card
                 name={fav.name}
@@ -43,6 +52,9 @@ export function Favorites ({ myFavorites }){
                 image={fav.image}
                 />
             ))}
+
+           </div>
+            
         </div>
     )
 }

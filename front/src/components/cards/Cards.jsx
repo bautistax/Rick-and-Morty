@@ -1,13 +1,10 @@
 import Card from '../card/Card.jsx';
 import styles from './Cards.module.css';
-// import styled from 'styled-components'
-
-// const Img=styled.img`
-// border-radius:70px;`
 
 export default function Cards(props) {
    const { characters, onClose} = props;
-   return <div className={styles.cards}>
+   return <div className={styles.container}>
+        <div className={`${styles.content_cards}`} >
       {
       characters.map((char)=>(
          <Card
@@ -22,5 +19,6 @@ export default function Cards(props) {
          onClose={()=> onClose(char.id)}
          />
       ))}
+      </div>
    </div>;
 }
