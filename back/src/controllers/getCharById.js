@@ -14,10 +14,10 @@ const  getCharById=async(req, res)=>{
                 gender:characterElem.gender,
                 species:characterElem.species
             }
-            res.status(200).json(character);
+            return res.status(200).json(character);
         }
         catch(error){
-            res.status(500).json({message:error.message})
+           return res.status(500).json({message:error.message})
         }
 }
     
