@@ -15,14 +15,40 @@
 
 // module.exports=postFavorite;
 
-const { Favorite } = require('../DB_connection');
-​
-const postFavorite = async (req, res) => {
+// const { Favorite } = require('../DB_connection');
+// ​
+// async function postFavorite(req, res) {
+//     try {
+//         const { id, name, status, species, gender, origin, image } = req.body;
+//         if (!id || !name || !status || !species || !gender || !origin || !image)
+//             return res.status(404).json({ message: 'Complete all fields' });
+
+//         const favorite = await Favorite.create({
+//             id,
+//             name,
+//             status,
+//             species,
+//             gender,
+//             origin,
+//             image
+//         });
+//         return res.status(200).json(favorite);
+
+//     } catch (error) {
+//         return res.status(404).json({ message: error.message });
+//     }
+// }
+// ​
+// module.exports = postFavorite;
+
+
+const {Favorites}=require('../DB_connection')
+
+const postFavorite =async (req, res) => {
     try {
         const { id, name, status, species, gender, origin, image } = req.body;
         if(!id || !name || !status || !species || !gender || !origin || !image) return res.status(404).json({message: 'Complete all fields'})
-​
-        const favorite = await Favorite.create({
+        const favorite = await Favorites.create({
             id,
             name,
             status,
@@ -32,10 +58,9 @@ const postFavorite = async (req, res) => {
             image
         })
         return res.status(200).json(favorite)
-​
     } catch (error) {
         return res.status(404).json({message: error.message})
     }
 }
-​
-module.exports = postFavorite;
+
+module.exports =  postFavorite ;

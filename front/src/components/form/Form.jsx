@@ -40,7 +40,7 @@ export default function Form (props){
         value={userData.username}
         onChange={handleInputChange}
         ></input>
-        <p>{errors.username}</p>
+        <p className={styles.p}>{errors.username} Mail:bautistabauza@gmail.com</p>
 
         {/* <label className={styles.user} htmlFor='password'>Password:</label> */}
         <input
@@ -51,7 +51,7 @@ export default function Form (props){
          value={userData.password}
          onChange={handleInputChange}
          ></input>
-         <p>{errors.password}</p>
+         <p className={styles.p}>{errors.password} <br /> Password:ba060702</p>
 
          <button type="submit">Login</button>
 

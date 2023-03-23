@@ -49,6 +49,10 @@ input {
     border: 0;
 }
 
+.p {
+    color: #fff;
+}
+
 input::placeholder {
     color: #333030;
 }
